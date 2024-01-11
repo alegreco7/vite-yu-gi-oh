@@ -10,32 +10,31 @@ export default {
   },
   data() {
     return {
+      store
     }
   },
-  mounted() {
-    this.getCard()
-  },
   methods: {
-    getCard() {
+    getCards() {
       axios.get(store.endpoint).then(response => (
         store.cardsList = response.data.data
       ))
     }
   },
+  created() {
+    this.getCards()
+  }
 }
 </script>
-
 <template lang="">
   <AppHeader/>
   <main>
     <div class="container">
-      <div class="row">
+      <div class="row gy-4 my-2">
         <AppCards/>
       </div>
     </div>
   </main>
 </template>
-
-<style lang="scss" scoped>
+<style lang="scss">
 @use './styles/generals.scss';
 </style>
